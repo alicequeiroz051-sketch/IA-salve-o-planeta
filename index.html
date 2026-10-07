@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IA: Salve o Planeta</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="prog"><i></i></div>
+
+<section id="hero">
+  <div class="tag">// Guardião Ambiental Digital</div>
+  <h1>E se a Inteligência Artificial pudesse ajudar a salvar o planeta?</h1>
+  <p class="muted" style="max-width:52ch">Sua cidade está em alerta. Use IA com sabedoria, decida rápido e descubra o que ela pode (e o que ela custa).</p>
+  <button class="btn pulse" id="start">[ COMEÇAR MISSÃO ]</button>
+</section>
+
+<section id="game">
+  <div class="tag">IA: SALVE O PLANETA</div>
+  <div class="hud fade">
+    <div class="meters">
+      <div class="meter"><small><span>🌱 Natureza</span><b id="vn">30</b></small><div class="bar"><i id="bn" style="background:var(--g)"></i></div></div>
+      <div class="meter"><small><span>⚡ Energia</span><b id="ve">30</b></small><div class="bar"><i id="be" style="background:#facc15"></i></div></div>
+      <div class="meter"><small><span>💧 Qualidade</span><b id="vq">30</b></small><div class="bar"><i id="bq" style="background:var(--b)"></i></div></div>
+    </div>
+    <div class="grid2">
+      <div id="cityBox" style="position:relative">
+        <svg id="city" viewBox="0 0 400 260" role="img" aria-label="Cidade vista de cima">
+          <rect id="ground" width="400" height="260"/>
+          <path id="river" d="M-10 200 C80 160 140 240 230 200 S360 150 410 190" fill="none" stroke-width="22" stroke-linecap="round"/>
+          <rect x="0" y="118" width="400" height="16" fill="#2b3330"/><rect x="0" y="125" width="400" height="2" fill="#6b776f"/>
+          <rect x="190" y="0" width="16" height="260" fill="#2b3330" opacity=".9"/>
+          <g id="blds"></g><g id="fact"></g><g id="trees"></g><g id="panels"></g><g id="bins"></g>
+          <g id="cars"></g>
+          <rect id="smog" width="400" height="260" fill="#6f6a5a" opacity=".5" style="transition:opacity .8s"/>
+        </svg>
+      </div>
+      <div id="qbox"></div>
+    </div>
+  </div>
+</section>
+
+<section id="end">
+  <div class="hud fade">
+    <div class="tag">Missão concluída</div>
+    <div class="rank" id="rank"></div>
+    <p>Pontuação final: <b id="score"></b> pontos</p>
+    <div class="meters" id="fm"></div>
+    <p style="font-size:1.15rem;margin:20px 0"><i>“O futuro não depende apenas da tecnologia. Depende de como escolhemos utilizá-la.”</i></p>
+    <button class="btn" id="again">[ JOGAR NOVAMENTE ]</button>
+    <button class="btn ghost" id="learn">[ APRENDER MAIS ]</button>
+  </div>
+</section>
+
+<section id="learnSec">
+  <div class="tag">Base de dados</div>
+  <h2>O que é Inteligência Artificial?</h2>
+  <p class="muted" style="max-width:62ch">É uma tecnologia capaz de analisar grandes quantidades de dados, reconhecer padrões e realizar tarefas que normalmente exigiriam inteligência humana, como identificar imagens, prever resultados e tomar decisões.</p>
+  
+  <h2 style="margin-top:36px">Por que esse assunto importa?</h2>
+  <div class="txt">
+    <p>O planeta enfrenta problemas que se conectam: <strong>mudanças climáticas</strong>, perda de florestas e de biodiversidade, poluição do ar e da água e consumo crescente de energia. Muitos desses problemas geram uma quantidade enorme de dados, como imagens de satélite, medições de sensores, registros de clima e de tráfego.</p>
+    <p>É aí que a Inteligência Artificial entra. Analisar esses dados manualmente levaria tempo demais. Com IA, é possível encontrar padrões, apontar riscos e sugerir ações <strong>mais rápido</strong> do que uma equipe humana conseguiria sozinha. A IA não resolve o problema sozinha: ela é uma ferramenta que ajuda pessoas, cientistas e governos a decidir melhor.</p>
+  </div>
+  <h2 style="margin-top:36px">Como a IA "aprende"?</h2>
+  <div class="txt"><p>Em muitos casos, a IA aprende por <strong>exemplos</strong>. Veja um caminho simplificado, usando como exemplo um sistema que reconhece desmatamento:</p></div>
+  <ol class="steps txt">
+    <li><b>Coleta de dados:</b> milhares de imagens de satélite de florestas, antes e depois de áreas serem derrubadas.</li>
+    <li><b>Treinamento:</b> o modelo compara as imagens e aprende quais padrões de cor e textura indicam árvores e quais indicam solo exposto.</li>
+    <li><b>Teste:</b> pesquisadores verificam se o modelo acerta em imagens que ele nunca viu.</li>
+    <li><b>Uso real:</b> o sistema analisa novas imagens e envia alertas para quem fiscaliza a região.</li>
+    <li><b>Revisão humana:</b> pessoas confirmam os alertas e corrigem erros, o que melhora o sistema com o tempo.</li>
+  </ol>
+  <h2 style="margin-top:36px">Como a IA pode ajudar o meio ambiente?</h2>
+  <p class="muted">Toque em um card para ativar.</p>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="costSec">
+  <div class="tag">O outro lado</div>
+  <h2>Mas a IA também tem um custo...</h2>
+  <p class="muted" style="max-width:64ch">Sistemas de IA rodam em computadores, servidores e data centers, que consomem energia e água para funcionar e para resfriar. O objetivo não é dizer que a IA é “boa” ou “ruim”: o impacto depende de como ela é desenvolvida e utilizada.</p>
+  <div class="hud scale">
+    <svg viewBox="0 0 400 190" style="width:100%;max-width:440px">
+      <rect x="196" y="50" width="8" height="120" fill="#4b6258"/><rect x="150" y="168" width="100" height="8" rx="3" fill="#4b6258"/>
+      <g id="beam"><rect x="40" y="46" width="320" height="8" rx="4" fill="#8aa89c"/>
+        <g id="panL"><line x1="60" y1="54" x2="60" y2="96" stroke="#8aa89c"/><rect x="20" y="96" width="80" height="34" rx="8" fill="#14442f" stroke="#3ddc84"/><text x="60" y="118" text-anchor="middle" fill="#e8f3ee" font-size="12">🌱 Benefícios</text></g>
+        <g id="panR"><line x1="340" y1="54" x2="340" y2="96" stroke="#8aa89c"/><rect x="300" y="96" width="80" height="34" rx="8" fill="#4a3a12" stroke="#facc15"/><text x="340" y="118" text-anchor="middle" fill="#e8f3ee" font-size="12">⚡ Impactos</text></g>
+      </g>
+    </svg>
+    <label for="sl" class="muted" style="font-size:.85rem">Como a IA é usada? Arraste o controle:</label>
+    <input id="sl" type="range" min="0" max="100" value="50">
+    <div class="fb" id="scTxt" style="max-width:520px"></div>
+  </div>
+
+  <h2 style="margin-top:44px">De onde vem o custo da IA?</h2>
+  <div class="cols">
+    <div class="hud"><h3>⚡ Energia</h3><p>Treinar e usar modelos de IA exige computadores potentes funcionando por horas ou dias. Quanto maior o modelo, maior costuma ser o consumo de eletricidade.</p></div>
+    <div class="hud"><h3>💧 Água</h3><p>Muitos data centers precisam ser resfriados para não superaquecer, e alguns sistemas de refrigeração usam água em grande quantidade.</p></div>
+    <div class="hud"><h3>🧱 Equipamentos</h3><p>Servidores e chips são fabricados com minerais e materiais que precisam ser extraídos. No fim da vida útil, viram lixo eletrônico se não forem reciclados.</p></div>
+  </div>
+  <h2 style="margin-top:36px">Como tornar a IA mais sustentável?</h2>
+  <div class="txt">
+    <p>O impacto da IA <strong>não é fixo</strong>. Ele muda conforme as escolhas de quem desenvolve e de quem usa. Algumas ideias que já são aplicadas ou estudadas:</p>
+  </div>
+  <div class="cols">
+    <div class="hud"><h3>Modelos mais eficientes</h3><p>Usar modelos menores e bem otimizados quando eles resolvem o problema, em vez de sempre usar o maior possível.</p></div>
+    <div class="hud"><h3>Energia limpa</h3><p>Alimentar data centers com fontes renováveis, como solar e eólica, reduz as emissões associadas.</p></div>
+    <div class="hud"><h3>Uso consciente</h3><p>Perguntar se a IA é realmente necessária para aquela tarefa. Nem tudo precisa de um modelo gigante.</p></div>
+    <div class="hud"><h3>Transparência</h3><p>Empresas que divulgam o consumo de energia e água permitem que a sociedade cobre melhorias.</p></div>
+  </div>
+  <div class="quote">A pergunta certa não é "IA é boa ou ruim?", e sim "este uso de IA traz mais benefícios do que custos?"</div>
+</section>
+
+<section id="quizSec">
+  <div class="tag">Desafio extra</div>
+  <h2>Você consegue descobrir?</h2>
+  <div id="quiz"></div>
+</section>
+
+<section id="finalSec">
+  <div class="tag">Glossário</div>
+  <h2>Termos que apareceram na missão</h2>
+  <details><summary>Inteligência Artificial (IA)</summary><p>Área da computação que cria sistemas capazes de analisar dados, reconhecer padrões e tomar decisões ou fazer previsões.</p></details>
+  <details><summary>Sensor</summary><p>Dispositivo que mede algo do mundo real, como poluição do ar, vazão de água ou temperatura, e envia esses dados para análise.</p></details>
+  <details><summary>Visão computacional</summary><p>Tipo de IA que "enxerga" imagens e vídeos, por exemplo para identificar desmatamento em fotos de satélite.</p></details>
+  <details><summary>Data center</summary><p>Prédio com muitos servidores que armazenam dados e executam sistemas de IA. Precisa de energia e de resfriamento.</p></details>
+  <details><summary>Energia renovável</summary><p>Energia de fontes que se renovam naturalmente, como o sol e o vento.</p></details>
+  <details><summary>Sustentabilidade</summary><p>Atender às necessidades de hoje sem comprometer os recursos das próximas gerações.</p></details>
+  <h2 style="margin-top:44px">Conclusão</h2>
+  <div class="txt">
+    <p>A Inteligência Artificial pode ser uma aliada poderosa do meio ambiente: ajuda a vigiar florestas, economizar água, prever o clima e usar melhor a energia. Ao mesmo tempo, ela consome recursos e precisa ser desenvolvida com responsabilidade.</p>
+    <p>No jogo, você viu que boas decisões melhoram a cidade e decisões ruins a pioram. No mundo real é parecido: <strong>a tecnologia sozinha não decide, as pessoas decidem</strong>. Entender como a IA funciona é o primeiro passo para usá-la bem.</p>
+  </div>
+  <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">[ VOLTAR AO INÍCIO ]</button>
+</section>
+<footer>IA: Salve o Planeta · experiência educativa interativa</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
